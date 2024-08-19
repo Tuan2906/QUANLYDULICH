@@ -1,0 +1,141 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+{% load humanize %}
+{% block extrahead %}
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
+{% block header %}
+  <h1 style="font-size:50px; color:green">Tour</h1>
+{% endblock %}
+{% block content %}
+<div class="container">
+        <div class="row">
+            <form class="d-flex">
+                <div class="form-group col-md-5">
+                    <input type="text" name="month" placeholder="Nhập tháng..." class="form-control custom-input">
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" value="Thống kê" class="btn btn-info">
+                </div>
+                <div class="form-group col-sm-3">Chọn loại:</div>
+                <div class="form-group col-md-2" style="background-color: white; width: 200px">
+                <select name="" id="transform" class="form-control p-1"  >
+                    <option value="Table" class="p-2">Table</option>
+                    <option value="Chart" class="p-2">Chart</option>
+                    <option value="All" class="p-2">ALL</option>
+                </select>
+</div>
+            </form>
+
+        </div>
+    </div>
+<h1 style="color: black">THỐNG KÊ DOANH THU CÁC TOUR CỦA CÔNG TY TRAVELOKA TRONG THÁNG {{m}}</h1>
+<div class="row" style="display: flex; width: 100%; justify-content: space-around; "   >
+
+                <div class="col-md-6" id="divtable" style="display:block ">
+                    <table class=" table table-success  table-bordered" style="">
+                        <tr >
+                            <td>Title </td>
+                            <td>Hành trình</td>
+                            <td>Số lượng hành khách</td>
+                            <td>Doanh thu</td>
+
+                        </tr>
+                        {% for c in stats %}
+                        <tr>
+                            <td>{{c.title}}</td>
+                            <td> {{c.diaChiDi}} - {{c.diaChiDen}} </td>
+                             <td>{{c.soluonghanhkhach}}</td>
+                            <td>{{c.doanhthu |floatformat:0 |intcomma }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <div style="font-size: 30px; font-weight: bold">
+                        Tổng doanh thu: {{ tong_doanh_thu|floatformat:"0"|intcomma }} VNĐ
+                    </div>
+                </div>
+
+        <div class="col-md-6"  id="divchart" style=" display:block; width: 50%" >
+            <div style="width: 70%">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<style>
+    .table-success tr:nth-child(odd) {
+        background-color: #ffff; /* Màu cho các dòng lẻ */
+        color:black;
+    }
+    .table-success tr:nth-child(even) {
+        background-color: #000; /* Màu cho các dòng chẵn */
+        color:white;
+    }
+    .custom-input {
+    background-color: white !important; /* Sử dụng !important để ghi đè các thuộc tính mặc định của Bootstrap nếu cần */
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    let data = [];
+
+    let labels = [];
+
+    {% for s in stats %}
+        data.push({{s.doanhthu}});
+        labels.push('{{s.title}}');
+    {% endfor %}
+
+    window.onload = function() {
+        const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'doughnut',
+         data: data,
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Doanh thu',
+            data: data,
+            borderWidth: 1,
+            backgroundColor: ['red', 'green', 'blue', 'gold', 'brown']
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+
+
+     var selectedStatic = document.getElementById('transform')
+        var chart = document.getElementById('divchart')
+        var table = document.getElementById('divtable')
+
+        selectedStatic.addEventListener('change', function() {
+            if(selectedStatic.value == 'Table'){
+                table.style.display = 'block'
+                chart.style.display = 'none'
+
+            }
+            if(selectedStatic.value == 'Chart'){
+                chart.style.display = 'block'
+                table.style.display = 'none'
+
+            }
+            if(selectedStatic.value == 'All'){
+                table.style.display = 'block'
+                chart.style.display = 'block'
+
+            }
+        });
+</script>
+{% endblock %}
