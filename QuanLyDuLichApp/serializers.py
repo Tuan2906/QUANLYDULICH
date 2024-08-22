@@ -99,3 +99,123 @@ class NguoiDangKySerializer(ModelSerializer):
         extra_kwargs = {'user': {'read_only': True}, 'active': {'read_only': True}}
 
 
+class CommentSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    reply_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comments
+        fields = ['id', 'content', 'created_date', 'user', 'reply_count']
+
+    def get_reply_count(self, obj):
+        return obj.comment_reply.count()
+
+class TransportationsSerilializer (serializers.ModelSerializer):
+    class Meta:
+        model = Transportation
+        fields = ['id','loai']
+
+
+class LocalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Local
+        fields = ['id','diaChi']
+
+class TagSerializer (serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['id','name']
+
+
+class RouterSerializer(serializers.ModelSerializer):
+    id_noiDi = LocalSerializer()
+    id_noiDen = LocalSerializer()
+    class Meta:
+        model =Route
+        fields = ['id_noiDi','id_noiDen']
+
+
+class StopLocalSerializer(serializers.ModelSerializer):
+    id_DiaDiem = LocalSerializer()
+    class Meta:
+        model = DiaDiemDungChan
+        fields = ['ThoiGianDuKien', 'id_DiaDiem']
+
+class JourneySerializer(serializers.ModelSerializer):
+    # router
+    id_tuyenDuong = RouterSerializer()
+    id_PhuongTien = TransportationsSerilializer()
+    stoplocal = serializers.SerializerMethodField(read_only=True)
+
+    def get_stoplocal(self,obj):
+        stop = DiaDiemDungChan.objects.filter(id_HanhTrinh = obj)
+        return StopLocalSerializer(stop,many=True).data #json
+
+    class Meta:
+        model = Journey
+        fields = ['ngayDi','ngayDen','id_tuyenDuong','id_PhuongTien','stoplocal']
+
+
+class DanhMucSerializer(ModelSerializer):
+    class Meta:
+        model = DanhMuc
+        fields = ['id', 'name', 'created_date', 'updated_date', 'active']
+
+class PostSerializer(serializers.ModelSerializer): # 1 user n post
+    journey = JourneySerializer(read_only=True)
+    tags = TagSerializer(many=True,read_only=True)
+    pic = ImageSerializer(many=True,read_only=True)
+    gia = serializers.SerializerMethodField()
+    soluongDaDat = serializers.SerializerMethodField(read_only=True)
+    avgRate = serializers.SerializerMethodField(read_only=True)
+
+    def get_avgRate(self, obj):
+        print('daw',obj)
+        avgRate = Rating.objects.filter(posts=obj).aggregate(Avg('rate'))
+        # avgRate = int(avgRate['rate__avg'])
+        print('dawdawda',avgRate)
+        if avgRate.get('rate__avg') is not None:
+            return avgRate['rate__avg']
+        else:
+            return 0
+
+
+    def get_gia(self, obj):
+        gia = GiaVe.objects.filter(tour=obj).values_list('gia',
+                                                         flat=True)  # Thay thế 'field1' bằng trường bạn muốn lấy
+        return list(gia)
+
+
+    def get_soluongDaDat(self, obj):
+        soluong = obj.nguoidangky_set.aggregate(count=Count('nguoithan'))['count']
+        print(soluong)
+        return soluong
+
+    class Meta:
+        model = BaiDangTour
+        fields = ["id","created_date","title",'journey', "tags",'pic','state','gia','max','soluongDaDat','avgRate']
+
+class Posts_userSerializer(PostSerializer):  # n user nhieu post
+    user_NV = UserSerializer()
+
+    class Meta:
+        model = PostSerializer.Meta.model
+        fields = ['user_NV'] + PostSerializer.Meta.fields
+
+
+class ReplySerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+
+    def get_user(self, obj):
+        user = obj.user
+        return {
+            "username": user.username,
+            "avatar": user.avatar.url if user.avatar else None
+        }
+
+    class Meta:
+        model = CommentReply
+        fields = ['id', 'content', 'created_date', 'user']
+
+
+

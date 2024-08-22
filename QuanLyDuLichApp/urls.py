@@ -5,6 +5,12 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 # router.register(r'tintuc', BaiDangTinTucViewSet, basename='tintuc')
 router.register('users', UserViewSet, basename='users')
+router.register(r'danhmuc', DanhMucViewSet, basename='danhmuc')
+router.register('tags',TagViewSet,basename='tags')
+router.register('comments', CommentViewSet, basename='comment')
+router.register('local',LocalViewSet,basename='local')
+router.register('picture',PictureViewSet,basename='picture')
+router.register('transports',TransportationViewSet,basename='transports')
 
 urlpatterns = [
     path('', include(router.urls)),

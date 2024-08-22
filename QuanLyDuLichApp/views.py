@@ -176,4 +176,94 @@ def save_invoice_and_send_email(request):
 
 
 
+class CommentViewSet(viewsets.ViewSet, generics.GenericAPIView):
+    queryset = Comments.objects.all()
+    serializer_class = CommentSerializer
 
+    # permission_classes = [perm.CommentOwner]
+    def get_permissions(self):
+        if self.action in ['add_and_get_comment_reply'] and self.request.POST:
+            return [permissions.IsAuthenticated()]
+        return [permissions.AllowAny()]
+
+    @action(methods=['post', 'get'], url_path='replies', detail=True,
+            description="Lay va luu danh sach rep cua 1 comment")
+    def add_and_get_comment_reply(self, request, pk):
+        comment = self.get_object()
+        if request.method.__eq__('POST'):
+            reply = CommentReply.objects.create(cmtRep=comment, content=request.data.get('content'), user=request.user)
+            return Response(CommentSerializer(comment).data, status=status.HTTP_201_CREATED)
+        if request.method.__eq__('GET'):
+            rep = comment.comment_reply.all().order_by("-created_date")
+            return Response(ReplySerializer(rep, many=True).data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_408_REQUEST_TIMEOUT)
+
+
+class LocalViewSet(viewsets.ViewSet, generics.ListAPIView): # Lay ds dia diem
+    queryset = Local.objects.all()
+    serializer_class = LocalSerializer
+
+
+class TransportationViewSet(viewsets.ViewSet, generics.ListAPIView): # lay ds phuong tien
+    queryset = Transportation.objects.all()
+    serializer_class = TransportationsSerilializer
+
+
+
+class PictureViewSet(viewsets.ViewSet, generics.ListAPIView): # lay ds hinh anh
+    queryset = JourneyPictures.objects.all()
+    serializer_class = ImageSerializer
+    pagination_class = paginators.PicturePaginator
+
+
+class TagViewSet(viewsets.ViewSet, generics.ListAPIView):  # Lay ds tag
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+    @action(methods=['get'], url_path='posts', detail=True, description="lay post theo tag")
+    def get_posts_by_tag(self, request, pk):
+        post_with_tag = BaiDangTour.objects.filter(tags__id=pk).select_related('journey').filter(
+            journey__ngayDi__gte=timezone.now()).order_by('-created_date')
+        print('dadajjjjjj')
+        jn = self.request.query_params.get('q')
+        c = self.request.query_params.get('c')
+        a = self.request.query_params.get('a')
+        ti = self.request.query_params.get('ti')
+        if jn and jn != 'undefined':
+            print('1')
+            print(jn)
+            post_with_tag = post_with_tag.filter(title__icontains=jn)
+        if c and c != 'undefined':
+            print('2')
+            post_with_tag = post_with_tag.filter(journey__id_tuyenDuong__id_noiDi__id=c)
+        if a and a != 'undefined':
+            print('3')
+            post_with_tag = post_with_tag.filter(journey__id_tuyenDuong__id_noiDen__id=a)
+        if ti and ti != 'undefined':
+            print('4')
+            ti = datetime.strptime(ti, "%Y-%m-%d").date()
+            print(ti)
+            post_with_tag = post_with_tag.filter(journey__ngayDi__date__gte=ti)
+        paginator = paginators.ListPostsPaginator()
+
+        serializer = Posts_userSerializer(post_with_tag, many=True)
+        page = paginator.paginate_queryset(post_with_tag, request)
+        if page is not None:
+            serializer = Posts_userSerializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
+        print('anc')
+        return Response(serializer, status=status.HTTP_200_OK)
+
+
+class DanhMucViewSet(viewsets.ViewSet, generics.ListAPIView):
+    queryset = DanhMuc.objects.filter(active=True)
+    serializer_class = DanhMucSerializer
+
+    def get_queryset(self):
+        queryset = self.queryset
+
+        q = self.request.query_params.get('q')
+        if q:
+            queryset = queryset.filter(name__icontains=q)
+
+        return queryset
