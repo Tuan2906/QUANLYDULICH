@@ -267,3 +267,85 @@ class DanhMucViewSet(viewsets.ViewSet, generics.ListAPIView):
             queryset = queryset.filter(name__icontains=q)
 
         return queryset
+
+    class PostViewSet(viewsets.ViewSet, generics.RetrieveAPIView):
+        queryset = BaiDangTour.objects.prefetch_related('tags')
+        serializer_class = PostDetailSerializer
+
+        # Xóa hoặc lấy chi tiết bài viết
+        def get_permissions(self):
+            if self.action in ['add_comments', 'add_rating']:
+                return [permissions.IsAuthenticated()]
+            return [permissions.AllowAny()]
+
+        @action(methods=['post'], url_path='rates', detail=True,
+                description="Lưu rating của user đó thuộc bài đăng đó")
+        def add_rating(self, request, pk):
+            c = self.get_object().rating_set.create(rate=request.data.get('rate'),
+                                                    user=request.user)
+            return Response(RatingSerializer(c).data, status=status.HTTP_201_CREATED)
+
+@csrf_exempt
+def handle_payments(request):
+    try:
+        # Lấy giá từ request.POST
+        # Các tham số gửi đến MoMo để lấy payUrl
+
+        print(request.POST.get('amount'))
+        endpoint = "https://test-payment.momo.vn/v2/gateway/api/create"
+        partnerCode = "MOMO"
+        accessKey = "F8BBA842ECF85"
+        secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz"
+        orderInfo = "Thanh toan qua MoMo"
+        redirectUrl = "http://localhost:3000/success"
+        ipnUrl = "http://192.168.1.17:8000/momo_ipn"
+        amount = request.POST.get('amount')
+        orderId = str(uuid.uuid4())
+        requestId = str(uuid.uuid4())
+        requestType = "payWithATM"
+        extraData = ""  # Pass empty value or Encode base64 JsonString
+
+        # Trước khi ký HMAC SHA256
+        rawSignature = f"accessKey={accessKey}&amount={amount}&extraData={extraData}&ipnUrl={ipnUrl}&orderId={orderId}&orderInfo={orderInfo}&partnerCode={partnerCode}&redirectUrl={redirectUrl}&requestId={requestId}&requestType={requestType}"
+
+        # Tạo chữ ký
+        h = hmac.new(bytes(secretKey, 'ascii'), bytes(rawSignature, 'ascii'), hashlib.sha256)
+        signature = h.hexdigest()
+
+        # Đối tượng JSON gửi đến endpoint MoMo
+        data = {
+            'partnerCode': partnerCode,
+            'partnerName': "Test",
+            'storeId': "MomoTestStore",
+            'requestId': requestId,
+            'amount': amount,
+            'orderId': orderId,
+            'orderInfo': orderInfo,
+            'redirectUrl': redirectUrl,
+            'ipnUrl': ipnUrl,
+            'lang': "vi",
+            'extraData': extraData,
+            'requestType': requestType,
+            'signature': signature
+        }
+
+        # Chuyển đổi dữ liệu thành JSON
+        data = json.dumps(data)
+        clen = len(data)
+
+        try:
+            # Gửi yêu cầu POST đến endpoint MoMo với dữ liệu JSON
+            response = requests.post(endpoint, data=data,
+                                     headers={'Content-Type': 'application/json', 'Content-Length': str(clen)})
+
+            # Xử lý phản hồi từ API
+            if response.status_code == 200:
+                data = response.json()
+                return JsonResponse({'payUrl': data.get('payUrl'),'orderId':orderId })
+            else:
+                return JsonResponse({'error': f'Error: {response.status_code}'}, status=response.status_code)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)

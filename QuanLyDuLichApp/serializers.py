@@ -219,3 +219,16 @@ class ReplySerializer(serializers.ModelSerializer):
 
 
 
+class PostDetailSerializer(PostSerializer):
+    tags = TagSerializer(many=True)
+    pic = ImageSerializer(many=True)
+    class Meta:
+        model = PostSerializer.Meta.model
+        fields = PostSerializer.Meta.fields + ['content', 'tags', 'pic',"active"]
+
+class RatingSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = Rating
+        fields = ['id', 'rate', "user"]
