@@ -3,6 +3,8 @@ from .views import *
 from rest_framework import routers
 
 router = routers.DefaultRouter()
+
+router.register('posts',PostViewSet,basename='posts')
 router.register('posts', PostViewSet, basename='posts')
 router.register('postsTinTuc', PostTinTucViewSet, basename='postsTinTuc')
 router.register('allposts', ListTinTucViewSet, basename='allposts')
