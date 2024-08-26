@@ -1,0 +1,58 @@
+.payment-container {
+    max-width: 600px;
+    margin: 125px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .tour-title {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .tour-info {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .tour-price {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #d9534f;
+  }
+  
+  .payment-method-group {
+    margin-bottom: 20px;
+  }
+  
+  .payment-method-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .payment-method-options {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .payment-method-option {
+    margin-left: 10px;
+  }
+  
+  .payment-button {
+    display: block;
+    width: 100%;
+    background-color: #0275d8;
+    border-color: #0275d8;
+  }
+  
