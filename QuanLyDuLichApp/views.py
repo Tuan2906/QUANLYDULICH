@@ -12,7 +12,7 @@ class UserViewSet(viewsets.ViewSet, generics.CreateAPIView):
         return access_token
 
     @action(methods=['get'], url_path='postsXetDuyet', detail=True,
-            permission_classes=[IsAuthenticated])  # user/id/posts: cho xem trang cá nhan ng khac
+            permission_classes=[IsAuthenticated]) 
     def get_posts_userNV(self, request, pk=None):
         user = self.get_object()
         print(user)
