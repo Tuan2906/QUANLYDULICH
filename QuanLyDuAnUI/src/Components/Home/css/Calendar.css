@@ -1,0 +1,17 @@
+.react-calendar{
+    width: 100%;
+    height: 400px;
+}
+.react-calendar__month-view__days{
+    height: 400px;
+
+}
+.select-quantity {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    color: red;
+  }
+  

@@ -1,0 +1,16 @@
+.Comment .input-field {
+    border: none; /* Loại bỏ border mặc định */
+    border-bottom: 1px solid #ccc; /* Đặt border chỉ dưới với màu sắc và kiểu đường line tùy chỉnh */
+    outline: none; /* Loại bỏ đường viền khi focus */
+    padding: 5px 10px; /* Điều chỉnh padding cho input */
+    width: 80%;
+    background-color: transparent !important;
+}
+
+.Comment .input-field:focus {
+border-bottom-color: blue; /* Màu sắc của border khi input được focus */
+}
+
+.Comment{
+    display: flex;
+}
