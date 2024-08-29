@@ -1,0 +1,58 @@
+/* styles.css */
+.footer {
+    border-top: 10px solid red;
+
+    background-color:"red"; /* Màu nền sáng */
+    padding: 2rem 0;
+  }
+  
+  .footer .list-unstyled li {
+
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer .list-unstyled li span {
+    margin-right: 0.5rem;
+  }
+  
+  .footer .info {
+    border-top: 1px solid red;
+    padding-top: 1rem;
+  }
+  
+  .footer .info img {
+    margin-top: 1rem;
+  }
+  
+  .footer .info li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer .info .contact {
+    font-weight: bold;
+  }
+  
+  .footer .info .contact .phone,
+  .footer .info .contact .email {
+    margin-right: 1rem;
+  }
+  
+  .footer .address {
+    font-weight: bold;
+  }
+  
+  .footer .address li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer .social-icons li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer .social-icons .fa {
+    margin-left: 0.5rem;
+    color: #333;
+  }
+  
