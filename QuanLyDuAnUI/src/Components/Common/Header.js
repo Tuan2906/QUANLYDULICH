@@ -13,7 +13,7 @@ import { authApi, endpoints } from '../../config/APIs';
 const Header = ({cart, countCart,page,setPage,loadingCart,setLoadingCart}) => {
   const user_cur = useRef(null);
   const [loading, setLoading] = useState(false)
-  const [lgShow, setLgShow] = useState(false);
+  const [lgShows, setLgShow] = useState(false);
 
   const nav = useNavigate();
 
@@ -171,7 +171,7 @@ const Header = ({cart, countCart,page,setPage,loadingCart,setLoadingCart}) => {
     </div>
     <Modal
         size="lg"
-        show={lgShow}
+        show={lgShows}
         onHide={() => setLgShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
       >
@@ -188,7 +188,7 @@ const Header = ({cart, countCart,page,setPage,loadingCart,setLoadingCart}) => {
               <div key={index} style={{ marginBottom: 10, display:'flex', justifyContent:'space-around', alignItems:'center' }}>
                 <Image src={item.pic[0].picture} style={{ width: 100, height: 100 }} />
                 <span>Nơi đi: {item.journey.id_tuyenDuong.id_noiDi.diaChi} </span>
-                <span>---------------<FaMotorcycle />-------------</span>
+                <div>---------------<FaMotorcycle />-------------</div>
                 <span>Nơi đến: {item.journey.id_tuyenDuong.id_noiDen.diaChi} </span>
                 <div >
                 <Button variant='danger' onClick={() => delCart(item.id)}><FaTrashAlt size={24} color="black" /></Button>
