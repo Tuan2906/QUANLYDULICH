@@ -1,0 +1,130 @@
+/* SecondPage.css */
+
+.second-page-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+  }
+  
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .tag.selected {
+    background-color: #b3ffb3;
+  }
+  
+  .transports-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .transport {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .transport.selected {
+    background-color: #b3ffb3;
+  }
+  
+  .date-container {
+    margin-bottom: 10px;
+  }
+  
+  .date-container input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .selected-destination {
+    margin-bottom: 10px;
+  }
+  
+  .destination-container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .destination-container select {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .close-icon {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .add-destination-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-destination-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .back-button,
+  .next-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover,
+  .next-button:hover {
+    background-color: #0056b3;
+  }
+  .datetime-picker {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .datetime-picker:focus {
+    outline: none;
+    border-color: #007bff; /* Màu sắc khi focus */
+  }
+  

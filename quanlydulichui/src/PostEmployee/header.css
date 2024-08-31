@@ -1,0 +1,25 @@
+/* Header.css */
+.custom-navbar {
+    background-color: green; /* Thay đổi màu nền cho header */
+    color: #fff; /* Thay đổi màu chữ nếu cần */
+}
+
+.custom-navbar .nav-link {
+    color: blue; /* Thay đổi màu của các liên kết trong navbar */
+}
+
+.custom-navbar .nav-link:hover {
+    color: #adb5bd; /* Thay đổi màu của liên kết khi di chuột qua */
+}
+
+.custom-navbar .navbar-brand {
+    color: #fff; /* Thay đổi màu chữ của logo */
+}
+
+.custom-navbar .navbar-brand:hover {
+    color: #adb5bd; /* Thay đổi màu chữ của logo khi di chuột qua */
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PHBhdGggZD0iTTE4IDFMMTggOEg2QzUuNDUyIDguNzA4IDMuNzAyIDguOTUgMiA4TDEgMiw4TDEuODMgOC42MTQgMTEgMTIgMCA0LjEyIDQuMzc0IDIuMjU0LjAyNTIuNTkzIDQuMzE5Ljg2MSAxNi45OTQuMzE5LjMwNCAyLjAzOS4yMDMgMjEuMzkzIDIzLjEyMSAzLjEyOS43MTQgMjEuMzkzIDIwLjEzNiA0LjEwNCAxMCA2IDQyLjY2NyAxLjg4MTEuMjk4NTIuMTU1MDEuMDQyMy4wMjI2IDYuNDUyMiAyMy4wMjMgMTIuNTAyIDIuMDcyNiAzLjA0NiA0LjExOS4wMDIgMTMuMDE3IDQ0IDQ0IDEuNjcwMyAyNi4wMjMgMCAzLjAyNC4wMDEyNy43MDIgMTEuNzk0IDQuMzg2IDEuMTg4MCA2LjEyNCAzLjM1IDYuMzU5My4zMDA2IDMuMDM0LjYxMyAzLjAyMyA1LjM5MTMgMy41MDEuMTU3MSAzLjAwNS4yMjQ0LjA3NDMgMCA1Ljk1NiAyLjA5NyA1Ljk1NiA2LjU1IDEuMjE0MyAwLjM0NiAwLjI1MiA0LjA5NyAxLjA0NiAyLjI1MiA4LjEzOCwzLjk2MiAyLjA5NyA5LjU5MyAzLjA0NiA5LjY1MyAzLjAwNSA1LjAyMyA2LjMwNCA2Ljk2NiA4LjEzOCw0LjY3NCA1LjI1MiAyLjU4MzcgNS4wMDI0IC44ODQ4IDEuNTU1LjE4MjUuMTUzOS43MTEuMTgxMy4wMTguMDc0NC41NTA1IDAuNjA0NC4yMDIgMi42MDIgMy44MTIgMy4wNTggMS44NDU2LjY2NiAxLjY1Ljg3MTIuMTc3MzEuMjU4Ni4xMzQyLjA3NDIuMzMwNi4wMTMgMjAuNjQ3LjA3NzQgMTMuMDc0IDMuMDc0LTExLjgyNiAzLjA2My0zLjA0NiAwLjE2OSAwLjE2OSAxLjI1MyAwLjE2OSAzLjA3My0wLjI2OSAwLjE2NyA2LjI1MiA3LjA5NyA1LjAzNCA2LjU2NCAyLjAzNC04LjU5MyAxLjkwMi02LjQyMSAyLjQ0NiAyLjA5Ny4zMDEuMTA1MjQuMDEyMi41NzA2LjA3NzQgMCAzLjA1MyA5LjY0MSAxLjE1NC00LjE3IDMuMDM0IDMuMDE2LjI0MyAzLjA0NiA1LjEyNyA3LjA3OSAyLjEzMCA4LjEzOC4zMjE2MS40OTY4LjA2NS41NzA2LjMwNCAwLjk4OS0wLjQyOSAxLjI1MiAwLjA1MiA1LjA5NyA5LjA2Mi4zMDIuMTk2OS4yMDEuMTk0Ny4wMDEyNzguMjI0LjAzNzMuMTk1Mi4wMDQuMTU2LjA2MyAyMy4wMjM4LjA3NzQuMTAwNS4wMDAyNzIuMTAxNiw2LjQ2Ni0xLjA2MyIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXI9ImF1dG8iLz48L3BhdGg+PC9zdmc+");
+}
