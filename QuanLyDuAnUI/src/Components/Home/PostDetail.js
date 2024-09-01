@@ -53,7 +53,7 @@ const PostDetail = ({update,setUpdate,setCountCard}) => {
     }
   };
 
-  const loadProduct = async () => {
+  const loadProduct = async (arg) => {
     try {
         console.log(post_id);
         let data = await getPost(post_id);
@@ -65,7 +65,7 @@ const PostDetail = ({update,setUpdate,setCountCard}) => {
     }
 }
 useEffect(() => {
-    loadProduct();
+    loadProduct(123);
 }, [post_id]);
   
 const addCart = async () => {
@@ -208,7 +208,7 @@ const addCart = async () => {
 
     
     { post!=null && <PostComments id_post={post_id} rate={post.avgRate}/>}
-
+        
     </>
     
   );
