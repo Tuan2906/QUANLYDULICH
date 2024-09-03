@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { SERVER_HOST, SERVER_PORT } from "@env";
 
-export const BASE_URL = 'http://192.168.1.15:8000/';
+export const BASE_URL = "http://192.168.1.11:8000/";
 
 export const endpoints = {
   user: (useRouteId) => `/users/?id=${useRouteId}`,
@@ -10,8 +10,8 @@ export const endpoints = {
   category: "danhmuc/",
   post: "allposts/",
   postnews: "postsTinTuc/",
-  postNewsDetail: (newsId) => `postsTinTuc/${newsId}`,
-  comments: (newsId) => `postsTinTuc/${newsId}/comments`,
+  postNewsDetail: (newsId) => `postsTinTuc/${newsId}/`,
+  comments: (newsId) => `postsTinTuc/${newsId}/comments/`,
 };
 
 export const authApi = (token) => {
