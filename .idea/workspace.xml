@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90c02fde-5098-4ed1-94e9-16b212b774cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuanLyDuLichApp/templates/admin/stats.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuanLyDuLichApp/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/QuanLyShareBuy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/QuanLyShareBuy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuanLyDuLichApp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuanLyDuLichApp/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuanLyDuLichApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuanLyDuLichApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuanLyDuLich/.env" beforeDir="false" afterPath="$PROJECT_DIR$/QuanLyDuLich/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuanLyDuLich/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuanLyDuLich/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuanLyDuLichApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuanLyDuLichApp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuanLyDuLichApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuanLyDuLichApp/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +42,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "chuongngo",
+    "git-widget-placeholder": "Merging chuongngo",
     "last_opened_file_path": "G:/QUANLYDULICH"
   }
 }]]></component>
