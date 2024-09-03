@@ -1,0 +1,79 @@
+.container {
+  padding: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.inputContent {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.imagePickerButton {
+  background-color: blue;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.scrollable-container {
+  margin-top: 2rem;
+  display: flex;
+  overflow-x: auto;
+}
+
+.image-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.image-container {
+  position: relative;
+  padding: 1rem;
+  border: 3px solid green;
+  border-radius: 2px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.check-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: green;
+}
+
+.imageScroll {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.imageContainer {
+  position: relative;
+  padding: 5px;
+}
+
+.imageCloseIcon {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  color: red;
+  cursor: pointer;
+}
