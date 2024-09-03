@@ -60,6 +60,60 @@ class ImageSerializer(ItemSerializer):
         fields = ["id","picture"]
 
 
+
+class PostTinTucSerializer(serializers.ModelSerializer):  # 1 user n post
+    pic = ImageSerializer(many=True, read_only=True)
+    danhmuc = serializers.PrimaryKeyRelatedField(queryset=DanhMuc.objects.all())
+
+    def create(self, validated_data):
+        pictures_data = validated_data.pop('pic', [])
+        danhMuc = validated_data.pop('danhmuc', None)
+        print('dawda',validated_data)
+        post = BaiDangTinTuc.objects.create(
+            **validated_data,
+            danhmuc=danhMuc
+
+        )
+        return post
+
+    class Meta:
+        model = BaiDangTinTuc
+        fields = ["id", "created_date", "content", "title", 'pic','danhmuc']
+
+
+class HanhKhanhSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NguoiThan
+        fields = ['id', 'ten', 'namsinh']
+
+
+class NguoiThanSerializer(ModelSerializer):
+    class Meta:
+        model = NguoiThan
+        fields = ['id', 'ten', 'namsinh', 'created_date', 'updated_date']
+        extra_kwargs = {'user': {'read_only': True}, 'active': {'read_only': True}}
+
+
+class NguoiDangKySerializer(ModelSerializer):
+    nguoi_than = NguoiThanSerializer(many=True, write_only=True)
+
+    class Meta:
+        model = NguoiDangKy
+        fields = ['id', 'user', 'posts', 'timeselect', 'created_date', 'updated_date', 'nguoi_than']
+        extra_kwargs = {'user': {'read_only': True}, 'active': {'read_only': True}}
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    reply_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comments
+        fields = ['id', 'content', 'created_date', 'user', 'reply_count']
+
+    def get_reply_count(self, obj):
+        return obj.comment_reply.count()
+
 class TransportationsSerilializer (serializers.ModelSerializer):
     class Meta:
         model = Transportation
@@ -70,6 +124,11 @@ class LocalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Local
         fields = ['id','diaChi']
+
+class TagSerializer (serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['id','name']
 
 
 class RouterSerializer(serializers.ModelSerializer):
@@ -107,6 +166,11 @@ class JourneySerializer(serializers.ModelSerializer):
         model = Journey
         fields = ['ngayDi','ngayDen','id_tuyenDuong','id_PhuongTien','stoplocal']
 
+
+class DanhMucSerializer(ModelSerializer):
+    class Meta:
+        model = DanhMuc
+        fields = ['id', 'name', 'created_date', 'updated_date', 'active']
 # Ti dap qua
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -253,6 +317,12 @@ class PostDetailSerializer(PostSerializer):
         model = PostSerializer.Meta.model
         fields = PostSerializer.Meta.fields + ['content', 'tags', 'pic',"active"]
 
+class RatingSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = Rating
+        fields = ['id', 'rate', "user"]
 
 class PostDetailEmployee(PostDetailSerializer):
     travelCompanion = serializers.SerializerMethodField()

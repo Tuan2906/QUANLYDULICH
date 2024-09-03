@@ -1,0 +1,98 @@
+.journey-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Thêm dòng này nếu bạn muốn các cột tự động xuống dòng khi không đủ chỗ */
+  }
+
+.journey-info .col-md-4 {
+  flex: 1; /* Đảm bảo mỗi cột có độ rộng bằng nhau */
+  padding: 10px; /* Tùy chỉnh khoảng cách giữa các cột */
+}
+
+.Container{
+  margin-top: 200!important;
+}
+
+.fixed-button {
+  position: fixed;
+  right: 20px;   /* Cách lề phải 20px */
+  bottom: 50%;  /* Cách lề dưới 20px */
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 50px;
+  padding: 15px;
+  z-index: 1000;    /* Đảm bảo nút nằm trên các thành phần khác */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.fixed-button.rate{
+  position: fixed;
+  right: 20px;   /* Cách lề phải 20px */
+  bottom: 58%;  /* Cách lề dưới 20px */
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 50px;
+  padding: 15px;
+  z-index: 1000;    /* Đảm bảo nút nằm trên các thành phần khác */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.fixed-button .cart-icon {
+  transition: transform 0.5s ease;
+}
+
+.fixed-button .hover-text {
+  opacity: 0;
+  white-space: nowrap; /* Ngăn dòng chữ xuống dòng */
+  color: white;
+  margin-left: 10px; /* Khoảng cách giữa icon và dòng chữ */
+  transition: opacity 0.5s ease;
+  position: absolute;
+  left: 30%;
+}
+
+.fixed-button:hover {
+  width: 250px; /* Tự động điều chỉnh chiều rộng để phù hợp với nội dung */
+  padding: 15px 30px; /* Thay đổi khoảng cách bên trong để chứa dòng chữ */
+  border-radius: 30px; /* Thay đổi bán kính viền để phù hợp với chiều rộng lớn hơn */
+}
+
+.fixed-button:hover .hover-text {
+  opacity: 1;
+  left: 25%;
+
+}
+
+.fixed-button:hover .cart-icon {
+  transform: translateX(-77px); /* Di chuyển icon sang trái để làm chỗ cho dòng chữ */
+}
+
+
+/* Static/Styles.css */
+/* Định dạng cho nút đánh giá */
+.rate-button-container {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+.fixed-button.rate {
+  /* margin-bottom: 10px; */
+}
+
+.rating-container {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 10px; */
+}
+.message{
+  right: 20px;   /* Cách lề phải 20px */
+  bottom: 66%;
+}

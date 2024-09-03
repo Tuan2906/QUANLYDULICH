@@ -1,0 +1,26 @@
+/* ChatStyle.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .messageList {
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  .inputContainer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }
+  .input {
+    flex: 1;
+    padding: 10px;
+  }
+  .sendButton {
+    padding: 10px;
+    margin-left: 5px;
+  }
+  
