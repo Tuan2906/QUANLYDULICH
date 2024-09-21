@@ -15,10 +15,10 @@ function LoginForm() {
     formData.append("username", username);
     formData.append("password", password);
     formData.append("grant_type", "password");
-    formData.append("client_id", "tsEaWqK2nl8yxy5kRtajUeJJ0ism8jyiNOigjasX");
+    formData.append("client_id", "N1kEnPaI19Cj4ntAm668vAlH9iT0nYcsDiCAvk3Q");
     formData.append(
       "client_secret",
-      "kAV8nxyvFc1UXlFx8AGo1jMtrjBlYoppbSXy1Q7PS1oECF6nr8e4z6dVp6syXBXW8opGhXSaPcJLRYez8QsHU1XJaBFAN9E3u66PmEvf51sLpR9rLRVxgPCFggJd3xyc"
+      "SKDX2OLdLIbPnkptjklXIKBPiymOEGvzopTLf1aVMf8dpU6VWCBVG7wDcL5YGSXHh2sc3aljVOoUG4tOWbNDoUu6XHIjk9bPnNrejwltaLNJyFtc7RgZ2qfpvWAiqBd5"
     );
 
     try {

@@ -166,21 +166,13 @@ const PaymentForm = ({ hoadon_id }) => {
                             <Form.Control
                                 type="number"
                                 name="amount"
+                                disabled={true}
                                 value={formData.amount}
                                 onChange={handleChange}
                                 required
                             />
                         </Form.Group>
-                        <Form.Group controlId="formOrderInfo">
-                            <Form.Label>Order Info</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="orderInfo"
-                                value={formData.orderInfo}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
+                        
                         {loading ? <MySpinner  animation="border" size="sm"/> : <Button variant="primary" type="submit">
                            Thanh toán Momo
                         </Button>}

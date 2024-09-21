@@ -130,7 +130,7 @@ const Main = ({ user }) => {
             <Route path="/chatNV" element={<Conversation />} />
             <Route path="/chatNV/:conversationId" element={<Chat />} />
             <Route path="/" element={<Navigate to="/login" />} />
-            <Route path="/news/create/" element={<NewsPostForm />} />
+            <Route path="/newscreate" element={<NewsPostForm />} />
           </Routes>
           <FooterNV />
         </Container>

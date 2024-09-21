@@ -32,6 +32,10 @@ const JourneyTable = ({formData}) => {
 
   const loadPostXetDuyet = async () => {
     console.log("user",user);
+    // let user_patse =  JSON.parse(user);
+    // console.log("user.id",user_patse.id);
+
+    console.log(localStorage.getItem("access-token"))
     try {
       const res = await authApi(localStorage.getItem("access-token")).get(endpoints['xetDuyet'](user.id));
       console.log("re",res.data.results);
@@ -42,6 +46,8 @@ const JourneyTable = ({formData}) => {
   };
   const loadTinTucXetDuyet = async () => {
     console.log("user",user);
+    // let user_patse = JSON.parse(user);
+
     try {
       const res = await authApi(localStorage.getItem("access-token")).get(endpoints['tinTuc'](user.id));
       setTinTuc(res.data.results);
@@ -153,7 +159,7 @@ const JourneyTable = ({formData}) => {
                   <button className="btn btn-primary btn-sm ml-2 flex-1" onClick={() => navigate("/postDieuHuong")}>
                     <i className="fa fa-plus-circle" aria-hidden="true"></i> Tạo tour
                   </button>
-                  <button className="btn btn-danger btn-sm ml-2 flex-1" onClick={() => navigate("/news/create/")}>
+                  <button className="btn btn-danger btn-sm ml-2 flex-1" onClick={() => navigate("/newscreate")}>
                     <i className="fa fa-plus-circle" aria-hidden="true"></i> Tạo tin tức
                   </button>
                 </div>

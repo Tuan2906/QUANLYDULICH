@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const BASE_URL = 'https://thanhduong.pythonanywhere.com';
-const BASE_URL = "http://192.168.1.11:8000/";
+const BASE_URL = "http://10.17.48.157:8000/";
 
 export const endpoints = {
   login: "/users/loginStaff/",
@@ -15,6 +15,7 @@ export const endpoints = {
   local: "/local/",
   picture: "/picture/",
   transport: "/transports/",
+  payMomo: "/payUrl",
   tag: "/tags/",
   tinTuc: (NV_id) => `/users/${NV_id}/tinTucXetDuyet/`,
   UpPost: "/api/post/",

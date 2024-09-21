@@ -554,7 +554,7 @@ def get_or_create_access_token(user):
     # Tìm application để cấp phát access token
     try:
         # Chọn ứng dụng mặc định hoặc theo logic của bạn
-        application = Application.objects.get(name='tourApp')
+        application = Application.objects.get(name='DULICH')
     except Application.DoesNotExist:
         # Xử lý khi không tìm thấy ứng dụng
         return None
@@ -712,7 +712,6 @@ class PostALlViewSet(APIView):
             print(request.data.get('diemDi'))
             print('dawdaw',request.data.getlist('pictureUserSelect'))
             print('dawdaw',request.FILES.getlist('pictureUserSelect'))
-            print('dawdaw',request.FILES.getlist('pictureUserSelect')[0])
 
             print('dawdaw',type(request.FILES.getlist('pictureUserSelect')))
 

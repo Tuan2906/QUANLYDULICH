@@ -16,8 +16,6 @@ const SuccessPage = () => {
       return randomString;
     };
     console.log(localStorage.getItem("thongTinChung"));
-  useEffect(() => {
-    // Gọi API lưu hóa đơn và gửi email
     const saveInvoiceAndSendEmail = async () => {
       try {
         const response = APIs.post(endpoints.sucessPay, {
@@ -64,6 +62,9 @@ const SuccessPage = () => {
         // Xử lý lỗi, hiển thị thông báo cho người dùng
       }
     };
+  useEffect(() => {
+    // Gọi API lưu hóa đơn và gửi email
+   
     saveInvoiceAndSendEmail();
     saveNguoiThan()
   }, []);

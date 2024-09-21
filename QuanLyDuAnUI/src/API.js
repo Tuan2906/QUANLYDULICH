@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { SERVER_HOST, SERVER_PORT } from "@env";
 
-export const BASE_URL = "http://192.168.1.11:8000/";
+export const BASE_URL = "http://10.17.48.157:8000/";
 
 export const endpoints = {
   user: (useRouteId) => `/users/?id=${useRouteId}`,

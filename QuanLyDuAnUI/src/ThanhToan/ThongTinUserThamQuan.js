@@ -211,7 +211,7 @@ const PassengerForm = () => {
                 />
                 Tôi đồng ý với các
                 <a target="blank" href="dieu-khoan-su-dung.html">điều kiện &amp; điều khoản</a>
-                của <span>HÃNG HÀNG KHÔNG VIỆT NAM</span>.
+                của <span>Du lịch việt</span>.
               </div>
             </div>
             <div style={{ width: '60%' }}>

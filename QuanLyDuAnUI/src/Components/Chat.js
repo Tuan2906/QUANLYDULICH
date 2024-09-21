@@ -29,6 +29,7 @@ const Chat = () => {
   else currentUser = cookies.load("user");
 
   useEffect(() => {
+    // Truy vấn các tin nhắn của cuộc trò chuyện hiện tại dựa vào conversationId và sắp xếp theo timestamp
     const q = query(
       collection(firestore, "messages"),
       where("conversationId", "==", conversationId)
